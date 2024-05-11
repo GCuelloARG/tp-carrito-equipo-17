@@ -32,16 +32,16 @@
                                 <a class="nav-link" href="#">Carrito</a>
                             </li>                                                        
                         </ul>
-                        <form class="d-flex" role="search">
-                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-outline-success" type="submit">Buscar</button>
-                        </form>
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Buscar</button>
                     </div>
                 </div>
             </nav>
-
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-            </asp:ContentPlaceHolder>
+            <div class="container"> <%--la class container sirve para poder utilizar el Grid de bootstrap--%>
+                <br />
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
         </div>
     </form>
 </body>

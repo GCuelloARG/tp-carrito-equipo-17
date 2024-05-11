@@ -48,10 +48,10 @@ namespace Negocio
                 }
                 return lista;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                throw ex;
             }
 
             finally 
