@@ -14,36 +14,21 @@ namespace TPCarrito_Equipo_M2
         
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (Session["id"] != null) /* si el id del request de la pag Default no esta vacio*/
-            //{
-            //    int id = int.Parse(Session["id"].ToString());/*capturo el id que recibo de Default.aspx*/
-            //    List<Articulo> listaTemporal = (List<Articulo>)Session["listaArticulos"];
+                
+            List<Articulo> carrito = (List<Articulo>)Session["carrito"];
 
-            //    Articulo artAgregado = listaTemporal.Find(a => a.Id == id); /*busco el id capturado dentro de la lista en sesion*/
-            //    listaArticulos.Add(artAgregado);
-
-            //    Session.Add("listaCarrito", listaArticulos);
-            //}
-
-
-            //dgvCarrito.DataSource = Session["listaCarrito"]; /*cargo el dgvCarrito con los articulos agregados*/
-            //dgvCarrito.DataBind();
-
-            if (!IsPostBack)
-            {
-                List<Articulo> carrito = (List<Articulo>)Session["carrito"];
-                generarTablaCarrito(carrito);
-            }
-
+            generarTablaCarrito(carrito);
 
         }
 
-        private void generarTablaCarrito(List<Articulo> carrito) /*dibujar tabla con los articulos agregados*/
+        protected void generarTablaCarrito(List<Articulo> carrito) /*dibujar tabla con los articulos agregados*/
         {
             if(carrito != null)
             {
                 foreach (Articulo art in carrito)
                 {
+
+                    int cantidad = 1;
                     TableRow fila = new TableRow();
 
                     TableCell celdaNombre = new TableCell();
@@ -58,10 +43,6 @@ namespace TPCarrito_Equipo_M2
                     celdaMarca.Text = art.Marca.ToString();
                     fila.Cells.Add(celdaMarca);
 
-                    TableCell celdaCategoria = new TableCell();
-                    celdaCategoria.Text = art.Cat.ToString();
-                    fila.Cells.Add(celdaCategoria);
-
                     TableCell celdaPrecio = new TableCell();
                     celdaPrecio.Text = art.Precio.ToString();
                     fila.Cells.Add(celdaPrecio);
@@ -70,9 +51,46 @@ namespace TPCarrito_Equipo_M2
                     celdaImagen.Text = art.Imagen.ToString();
                     fila.Cells.Add(celdaImagen);
 
+                    TableCell celdaCantidad = new TableCell();
+                    TextBox txtCantidad = new TextBox();
+                    txtCantidad.Text = cantidad.ToString();
+                    celdaCantidad.Controls.Add(txtCantidad);
+                    fila.Cells.Add(celdaCantidad);
+
+                    TableCell celdaEliminar = new TableCell();
+                    Button btnEliminar = new Button();
+                    btnEliminar.Text = "Eliminar";
+                    btnEliminar.CommandArgument = art.Id.ToString();
+                    btnEliminar.Command += btnEliminar_Click;
+                    celdaEliminar.Controls.Add(btnEliminar);
+                    fila.Cells.Add(celdaEliminar);
+
                     TableCarrito.Rows.Add(fila);
                 }
             }
+        }
+                    
+
+        protected void btnEliminar_Click(object sender, EventArgs e) 
+        {
+            Button button = (Button)sender;
+            int idArticulo = int.Parse(button.CommandArgument);
+
+            List<Articulo> carrito =(List<Articulo>) Session["carrito"];
+
+
+            for (int i = 0; i < carrito.Count() ; i++)
+            {
+                if(carrito[i].Id == idArticulo)
+                {
+                    carrito.RemoveAt(i);
+                    Session["carrito"] = carrito;
+                    Response.Redirect("Carrito.aspx", false);
+                    return;
+                }
+
+            }
+
         }
 
     }

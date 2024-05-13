@@ -9,9 +9,9 @@
             <asp:TableHeaderCell>Nombre</asp:TableHeaderCell>
             <asp:TableHeaderCell>Descripcion</asp:TableHeaderCell>
             <asp:TableHeaderCell>Marca</asp:TableHeaderCell>
-            <asp:TableHeaderCell>Categoria</asp:TableHeaderCell>
             <asp:TableHeaderCell>Precio</asp:TableHeaderCell>
             <asp:TableHeaderCell>Imagen</asp:TableHeaderCell>
+            <asp:TableHeaderCell>Cantidad</asp:TableHeaderCell>
         </asp:TableHeaderRow>
             
     </asp:Table>

@@ -16,9 +16,5 @@ namespace TPCarrito_Equipo_M2
         {
         }
 
-        protected void lkbCarrito_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

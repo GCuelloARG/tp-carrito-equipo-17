@@ -48,7 +48,21 @@ namespace TPCarrito_Equipo_M2
                 {
                     carrito = (List<Articulo>)Session["carrito"];
                 }
-                carrito.Add(artAgregado);
+
+                bool articuloExistente = false;
+
+                foreach (Articulo art in carrito) 
+                {
+                    if (artAgregado.Id == art.Id)
+                    {
+                        articuloExistente = true;
+                        break;
+                    }
+                }
+                if (!articuloExistente) /*si el articulo ya existe no lo vuelve a agregar*/
+                {
+                    carrito.Add(artAgregado);
+                }
 
                 Session["carrito"] = carrito; /*vuelvo a sobrescribir la sesion con el articulo nuevo*/
 
