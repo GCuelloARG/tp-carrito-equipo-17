@@ -12,7 +12,7 @@ namespace TPCarrito_Equipo_M2
 {
     public partial class Default : System.Web.UI.Page
     {
-        
+        public List<Articulo> ListaArticulos { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
             if(Session["listaArticulos"] == null) 
@@ -22,9 +22,15 @@ namespace TPCarrito_Equipo_M2
                 Session.Add("listaArticulos", negocioArticulo.listar()); /* guardo la lista en sesion*/
             }
 
-            dgvArticulos.DataSource = Session["listaArticulos"]; //origen de datos de dgvArticulos
-            dgvArticulos.DataBind(); //dibujar la tabla
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            ListaArticulos = negocio.listar();
 
+            repArticulo.DataSource = ListaArticulos;
+            repArticulo.DataBind();
+
+
+            //dgvArticulos.DataSource = Session["listaArticulos"]; //origen de datos de dgvArticulos
+            //dgvArticulos.DataBind(); //dibujar la tabla
         }
 
 
