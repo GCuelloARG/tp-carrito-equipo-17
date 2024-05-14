@@ -15,31 +15,37 @@ namespace TPCarrito_Equipo_M2
         public List<Articulo> ListaArticulos { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(Session["listaArticulos"] == null) 
+            if (Session["listaArticulos"] == null)
             {
                 ArticuloNegocio negocioArticulo = new ArticuloNegocio();
 
                 Session.Add("listaArticulos", negocioArticulo.listar()); /* guardo la lista en sesion*/
             }
 
-            ArticuloNegocio negocio = new ArticuloNegocio();
-            ListaArticulos = negocio.listar();
+            if (!IsPostBack)
+            {
+                ArticuloNegocio negocio = new ArticuloNegocio();
+                ListaArticulos = negocio.listar();
 
-            repArticulo.DataSource = ListaArticulos;
-            repArticulo.DataBind();
+                repArticulo.DataSource = ListaArticulos;
+                repArticulo.DataBind();
 
+
+            }
 
             //dgvArticulos.DataSource = Session["listaArticulos"]; //origen de datos de dgvArticulos
             //dgvArticulos.DataBind(); //dibujar la tabla
         }
 
 
-        protected void dgvArticulos_SelectedIndexChanged(object sender, EventArgs e)
+        protected void btnAgregar_Click(object sender, EventArgs e)
         {
-            string id= dgvArticulos.SelectedDataKey.Value.ToString();
+            Button btnAgregar = (Button)sender;
+
+            string id = btnAgregar.CommandArgument;
 
 
-            if(id != null)
+            if (id != null)
             {
                 List<Articulo> listaTemporal = (List<Articulo>)Session["listaArticulos"];
 
@@ -57,7 +63,7 @@ namespace TPCarrito_Equipo_M2
 
                 bool articuloExistente = false;
 
-                foreach (Articulo art in carrito) 
+                foreach (Articulo art in carrito)
                 {
                     if (artAgregado.Id == art.Id)
                     {
@@ -73,7 +79,7 @@ namespace TPCarrito_Equipo_M2
                 Session["carrito"] = carrito; /*vuelvo a sobrescribir la sesion con el articulo nuevo*/
 
 
-                Response.Redirect("Carrito.aspx",false);
+                Response.Redirect("Carrito.aspx", false);
 
             }
         }

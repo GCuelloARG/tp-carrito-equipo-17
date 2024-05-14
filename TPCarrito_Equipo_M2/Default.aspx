@@ -4,21 +4,8 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <!-- <asp:GridView runat="server" ID="dgvArticulos" DataKeyNames="Id" OnSelectedIndexChanged="dgvArticulos_SelectedIndexChanged" AutoGenerateColumns="false" CssClass="table">
-        <Columns>
-            <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
-            <asp:BoundField HeaderText="Descripcion" DataField="Descripcion" />
-            <asp:BoundField HeaderText="Marca" DataField="Marca" />
-            <asp:BoundField HeaderText="Categoria" DataField="Cat" />
-            <asp:BoundField HeaderText="Precio" DataField="Precio" />
-            <asp:ImageField HeaderText="Imagen" DataImageUrlFormatString="Imagen" />
-            <asp:CommandField ShowSelectButton="true" SelectText="Agregar" HeaderText="Agregar a carrito"/>
-        </Columns>
-    </asp:GridView>-->
-
-
     <div class="row">
-        <asp:Repeater ID="repArticulo" runat="server">
+        <asp:Repeater ID="repArticulo" runat="server" >
             <ItemTemplate>
                 <div class="col 4">
 
@@ -32,8 +19,11 @@
                             <li class="list-group-item"><%#Eval("Marca") %></li>
                             <li class="list-group-item"><%#Eval("Precio") %></li>
                         </ul>
-                        <div class="card-body">                                                        
-                            <asp:Button ID="btnAgregar" runat="server" CssClass="btn btn-success" Text="Agregar al Carrito" />
+                        <div class="card-body">    
+                            btnEliminar.CommandArgument = art.Id.ToString();
+                            btnEliminar.Command += btnEliminar_Click;
+                               celdaEliminar.Controls.Add(btnEliminar);
+                            <asp:Button ID="btnAgregar" runat="server" CssClass="btn btn-success" Text="Agregar al Carrito" OnClick="btnAgregar_Click" CommandArgument=<%#Eval("Id")%>/>               
                         </div>
                     </div>
                     <hr />
