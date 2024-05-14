@@ -29,8 +29,6 @@ namespace TPCarrito_Equipo_M2
 
                 repArticulo.DataSource = ListaArticulos;
                 repArticulo.DataBind();
-
-
             }
 
             //dgvArticulos.DataSource = Session["listaArticulos"]; //origen de datos de dgvArticulos

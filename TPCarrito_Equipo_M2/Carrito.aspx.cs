@@ -17,7 +17,9 @@ namespace TPCarrito_Equipo_M2
                 
             List<Articulo> carrito = (List<Articulo>)Session["carrito"];
 
-            generarTablaCarrito(carrito);
+            repCarrito.DataSource = carrito;
+            repCarrito.DataBind();
+            //generarTablaCarrito(carrito);
 
         }
 
