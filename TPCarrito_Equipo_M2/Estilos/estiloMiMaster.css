@@ -1,0 +1,28 @@
+﻿body {
+}
+
+.carrito{
+    position:relative;
+    margin-left:10px;
+}
+.cantidad-carrito {
+    position: absolute;
+    background-color: forestgreen;
+    color: aliceblue;
+    border-radius:50%;
+    height: 20px;
+    width: 20px;
+    text-align: center;
+    line-height: 20px;
+    right:0px;
+    top:-5px;
+}
+
+.buscador {
+    width: 70%;
+    display: flex;
+    margin:auto;
+}
+.buscador button {
+    margin-left:10px;
+}

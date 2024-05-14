@@ -13,6 +13,9 @@
     <%--Iconos de FontAwesome--%>
     <script src="https://kit.fontawesome.com/0a44d9e8d2.js" crossorigin="anonymous"></script>
 
+    <%--Css--%>
+    <link href="Estilos/estiloMiMaster.css" rel="stylesheet" >
+
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -32,13 +35,18 @@
                                 <a class="nav-link active" aria-current="page" href="Default.aspx">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="Carrito.aspx">
-                                    <i class="fa-solid fa-cart-shopping fa-fade fa-xl"></i>
-                                </a>
+                                <div class="carrito">
+                                    <a class="nav-link active" aria-current="page" href="Carrito.aspx">
+                                        <i class="fa-solid fa-cart-shopping fa-fade fa-xl"></i>
+                                    </a>
+                                    <span class="cantidad-carrito">10</span>
+                                </div>
                             </li>                                                        
                         </ul>
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Buscar</button>
+                        <div class="buscador">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success" type="submit">Buscar</button>
+                        </div>
                     </div>
                 </div>
             </nav>

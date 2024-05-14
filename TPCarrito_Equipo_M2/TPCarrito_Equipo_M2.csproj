@@ -69,6 +69,7 @@
   <ItemGroup>
     <Content Include="Carrito.aspx" />
     <Content Include="Default.aspx" />
+    <Content Include="Estilos\estiloMiMaster.css" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
