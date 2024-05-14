@@ -69,6 +69,7 @@
   <ItemGroup>
     <Content Include="Carrito.aspx" />
     <Content Include="Default.aspx" />
+    <Content Include="Detalle.aspx" />
     <Content Include="Estilos\estiloMiMaster.css" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
@@ -87,6 +88,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Detalle.aspx.cs">
+      <DependentUpon>Detalle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Detalle.aspx.designer.cs">
+      <DependentUpon>Detalle.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
