@@ -22,5 +22,6 @@ namespace Dominio
         public Categoria Cat { get; set; }
         public Imagen Imagen { get; set; }
         public decimal Precio { get; set; }
+        public int Cantidad { get; set; }
     }
 }

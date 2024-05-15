@@ -30,6 +30,17 @@
                                 <p class="card-text"><%#Eval("Descripcion") %></p>
                                 <p class="card-text"><small class="text-body-secondary"><%#Eval("Marca") %></small></p>
                                 <p class="card-text"><small class="text-body-secondary"><%#Eval("Precio") %></small></p>
+
+                                <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+
+                                    <asp:Button ID="btnDescontar" runat="server" CssClass="btn btn-success" Text=" - " />
+                                    <div style="display: block; text-align: center; margin: auto;"> 
+                                        <asp:Label ID="lblContadir" runat="server" CssClass="text-body-secondary" Width="44"><%#Eval("Cantidad") %></asp:Label>
+                                    </div>                                    
+                                    <asp:Button ID="btnAumentar" runat="server" CssClass="btn btn-success" Text=" + " OnClick="btnAumentar_Click" CommandArgument=<%#Eval("Id")%>/>
+
+                                </div>
+
                             </div>
                         </div>
                     </div>

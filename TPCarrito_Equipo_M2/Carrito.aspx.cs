@@ -14,11 +14,13 @@ namespace TPCarrito_Equipo_M2
         
         protected void Page_Load(object sender, EventArgs e)
         {
-                
-            List<Articulo> carrito = (List<Articulo>)Session["carrito"];
+            if (!IsPostBack)
+            {
+                List<Articulo> carrito = (List<Articulo>)Session["carrito"];
 
-            repCarrito.DataSource = carrito;
-            repCarrito.DataBind();
+                repCarrito.DataSource = carrito;
+                repCarrito.DataBind();
+            }                       
             //generarTablaCarrito(carrito);
 
         }
@@ -95,5 +97,23 @@ namespace TPCarrito_Equipo_M2
 
         }
 
+        protected void btnAumentar_Click(object sender, EventArgs e)
+        {
+            Button btnAumentar = (Button)sender;
+            string id = btnAumentar.CommandArgument;
+            List<Articulo> lista = (List<Articulo>)Session["carrito"];
+            Articulo artAumentado = lista.Find(a => a.Id == int.Parse(id)); /*busco el id capturado dentro de la lista en sesion*/
+            
+            foreach (Articulo arti in lista)
+            {
+                if(arti.Id == artAumentado.Id)
+                {
+                    arti.Cantidad++;
+                    Session["carrito"] = lista;
+                    Response.Redirect("Carrito.aspx", false);
+                    return;
+                }
+            }
+        }
     }
 }
