@@ -23,9 +23,6 @@
                             <a href="Detalle.aspx?id=<%#Eval("id")%>">Detalles</a>
                         </div>
                         <div class="card-body">    
-                            btnEliminar.CommandArgument = art.Id.ToString();
-                            btnEliminar.Command += btnEliminar_Click;
-                            celdaEliminar.Controls.Add(btnEliminar);
                             <asp:Button ID="btnAgregar" runat="server" CssClass="btn btn-success" Text="Agregar al Carrito" OnClick="btnAgregar_Click" CommandArgument=<%#Eval("Id")%>/>               
                         </div>
                     </div>
