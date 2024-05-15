@@ -51,7 +51,7 @@
             <hr />
             <figure class="text-center">
                 <blockquote class="blockquote">                       
-                    <asp:Label ID="lblTotal" runat="server" CssClass="H2">Total: $</asp:Label>
+                    <asp:Label ID="lblTotal" runat="server" CssClass="h2"></asp:Label>
                 </blockquote>
             </figure>
         </div>

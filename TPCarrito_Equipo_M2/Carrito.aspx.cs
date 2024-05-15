@@ -10,8 +10,7 @@ using Negocio;
 namespace TPCarrito_Equipo_M2
 {
     public partial class Carrito : System.Web.UI.Page
-    {
-        public decimal total = 0;
+    {        
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -19,12 +18,24 @@ namespace TPCarrito_Equipo_M2
                 List<Articulo> carrito = (List<Articulo>)Session["carrito"];
 
                 repCarrito.DataSource = carrito;
-                repCarrito.DataBind();                
+                repCarrito.DataBind();
+                if(carrito != null)
+                {
+                    sumarCompra();
+                }                
             }
-            
+            //generarTablaCarrito(carrito);            
+        }
 
-            //generarTablaCarrito(carrito);
-
+        void sumarCompra()
+        {
+            decimal total = 0;
+            List<Articulo> lista = (List<Articulo>)Session["carrito"];
+            foreach (Articulo arti in lista)
+            {
+                total= total + (arti.Precio*arti.Cantidad);
+            }
+            lblTotal.Text = "Total: $" + total;
         }
 
         /*protected void generarTablaCarrito(List<Articulo> carrito) /*dibujar tabla con los articulos agregados*/
