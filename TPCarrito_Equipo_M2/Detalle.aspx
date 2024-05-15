@@ -7,13 +7,13 @@
     <div class="container">
         <div class="row">
             <div class="col-sm">
-                <h1>detalle con foto</h1>
+                <h1><asp:Label ID="lblNombre" runat="server" /></h1>
                 <img src="https://media.istockphoto.com/id/1409329028/vector/no-picture-available-placeholder-thumbnail-icon-illustration-design.jpg?s=612x612&w=0&k=20&c=_zOuJu755g2eEUioiOUdz_mHKJQJn-tDgIAhQzyeKUQ=" class="rounded mx-auto d-block" alt="300">
             </div>
             <div class="col-sm">
-                <h2>controles carrito</h2>
-                <h3>Descripcion</h3>
-                <p>breve explicacion traida desde base de datos</p>
+                <h2>Descripcion</h2>
+                <p><asp:Label ID="lblDescripcion" runat="server" /></p><br />
+                <h6><asp:Label ID="lblMarca" runat="server" /></h6>
                 <div class="container">
                     <div class="row">
                         <div class="col">
@@ -26,6 +26,10 @@
                                     <asp:Button Text="+" id="btnAumenta" cssclass="btn btn-outline-secondary" OnClick="btnAumenta_Click" runat="server" />
                                     
                                 </div>
+                            </div>
+                            <div>
+                                <label>$  </label>
+                                <asp:Label ID="lblPrecio" runat="server" />
                             </div>
                         </div>
                     </div>

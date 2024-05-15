@@ -9,7 +9,7 @@
             <ItemTemplate>
                 <div class="col 4">
 
-                    <div class="card" style="width: 18rem;">
+                    <div class="card" style="width:18rem">
                         <img src="<%#((Dominio.Imagen)Eval("Imagen")).UrlImagen%>" class="card-img-top">
                         <div class="card-body">
                             <h5 class="card-title"><%#Eval("Nombre") %></h5>
@@ -19,10 +19,13 @@
                             <li class="list-group-item"><%#Eval("Marca") %></li>
                             <li class="list-group-item"><%#Eval("Precio") %></li>
                         </ul>
+                        <div class="card-body">
+                            <a href="Detalle.aspx?id=<%#Eval("id")%>">Detalles</a>
+                        </div>
                         <div class="card-body">    
                             btnEliminar.CommandArgument = art.Id.ToString();
                             btnEliminar.Command += btnEliminar_Click;
-                               celdaEliminar.Controls.Add(btnEliminar);
+                            celdaEliminar.Controls.Add(btnEliminar);
                             <asp:Button ID="btnAgregar" runat="server" CssClass="btn btn-success" Text="Agregar al Carrito" OnClick="btnAgregar_Click" CommandArgument=<%#Eval("Id")%>/>               
                         </div>
                     </div>
