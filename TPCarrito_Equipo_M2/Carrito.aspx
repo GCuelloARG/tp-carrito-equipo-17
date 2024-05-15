@@ -33,11 +33,11 @@
 
                                 <div class="btn-group" role="group" aria-label="Basic mixed styles example">
 
-                                    <asp:Button ID="btnDescontar" runat="server" CssClass="btn btn-success" Text=" - " />
-                                    <div style="display: block; text-align: center; margin: auto;"> 
+                                    <asp:Button ID="btnDescontar" runat="server" CssClass="btn btn-success" Text=" - " OnClick="btnDescontar_Click" CommandArgument='<%#Eval("Id") %>'/>
+                                    <div style="display: block; text-align: center; margin: auto;">
                                         <asp:Label ID="lblContadir" runat="server" CssClass="text-body-secondary" Width="44"><%#Eval("Cantidad") %></asp:Label>
-                                    </div>                                    
-                                    <asp:Button ID="btnAumentar" runat="server" CssClass="btn btn-success" Text=" + " OnClick="btnAumentar_Click" CommandArgument=<%#Eval("Id")%>/>
+                                    </div>
+                                    <asp:Button ID="btnAumentar" runat="server" CssClass="btn btn-success" Text=" + " OnClick="btnAumentar_Click" CommandArgument='<%#Eval("Id")%>' />
 
                                 </div>
 
@@ -47,6 +47,14 @@
                 </div>
             </ItemTemplate>
         </asp:Repeater>
+        <div>
+            <hr />
+            <figure class="text-center">
+                <blockquote class="blockquote">                       
+                    <asp:Label ID="lblTotal" runat="server" CssClass="H2">Total: $</asp:Label>
+                </blockquote>
+            </figure>
+        </div>
     </div>
 
 </asp:Content>

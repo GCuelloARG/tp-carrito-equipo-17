@@ -11,7 +11,7 @@ namespace TPCarrito_Equipo_M2
 {
     public partial class Carrito : System.Web.UI.Page
     {
-        
+        public decimal total = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -19,14 +19,16 @@ namespace TPCarrito_Equipo_M2
                 List<Articulo> carrito = (List<Articulo>)Session["carrito"];
 
                 repCarrito.DataSource = carrito;
-                repCarrito.DataBind();
-            }                       
+                repCarrito.DataBind();                
+            }
+            
+
             //generarTablaCarrito(carrito);
 
         }
 
-        protected void generarTablaCarrito(List<Articulo> carrito) /*dibujar tabla con los articulos agregados*/
-        {
+        /*protected void generarTablaCarrito(List<Articulo> carrito) /*dibujar tabla con los articulos agregados*/
+        /*{
             if(carrito != null)
             {
                 foreach (Articulo art in carrito)
@@ -72,8 +74,8 @@ namespace TPCarrito_Equipo_M2
                     TableCarrito.Rows.Add(fila);
                 }
             }
-        }
-                    
+        }*/
+
 
         protected void btnEliminar_Click(object sender, EventArgs e) 
         {
@@ -109,6 +111,39 @@ namespace TPCarrito_Equipo_M2
                 if(arti.Id == artAumentado.Id)
                 {
                     arti.Cantidad++;
+                    Session["carrito"] = lista;
+                    Response.Redirect("Carrito.aspx", false);
+                    return;
+                }
+            }
+        }
+
+        protected void btnDescontar_Click(object sender, EventArgs e)
+        {
+            Button btnDescontar = (Button)sender;
+            string id = btnDescontar.CommandArgument;
+            List<Articulo> lista = (List<Articulo>)Session["carrito"];
+            Articulo artDescontado = lista.Find(a => a.Id == int.Parse(id)); /*busco el id capturado dentro de la lista en sesion*/
+
+            foreach (Articulo arti in lista)
+            {
+                if (arti.Id == artDescontado.Id)
+                {
+                    if (arti.Cantidad < 2)
+                    {
+                        for (int i = 0; i < lista.Count(); i++)
+                        {
+                            if (lista[i].Id == artDescontado.Id)
+                            {
+                                lista.RemoveAt(i);
+                                Session["carrito"] = lista;
+                                Response.Redirect("Carrito.aspx", false);
+                                return;
+                            }
+
+                        }
+                    }
+                    arti.Cantidad--;
                     Session["carrito"] = lista;
                     Response.Redirect("Carrito.aspx", false);
                     return;
