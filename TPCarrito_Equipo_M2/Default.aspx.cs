@@ -13,8 +13,14 @@ namespace TPCarrito_Equipo_M2
     public partial class Default : System.Web.UI.Page
     {
         public List<Articulo> ListaArticulos { get; set; }
+        
+        bool filtroActivo = false;
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            if (Request.QueryString["filtroActivo"] != null)
+                filtroActivo =bool.Parse( Request.QueryString["filtroActivo"].ToString());
+
             if (Session["listaArticulos"] == null)
             {
                 ArticuloNegocio negocioArticulo = new ArticuloNegocio();
@@ -24,12 +30,23 @@ namespace TPCarrito_Equipo_M2
 
             if (!IsPostBack)
             {
-                ArticuloNegocio negocio = new ArticuloNegocio();
-                ListaArticulos = negocio.listar();
+                if (filtroActivo) /* si se activo la busqueda*/
+                {
+                    ListaArticulos = Session["filtro"] != null ? (List<Articulo>)Session["filtro"]:ListaArticulos;
+ 
+                    filtroActivo = false;
+                }
+                else /*lista normal*/
+                {
+                    ArticuloNegocio negocio = new ArticuloNegocio();
+                    ListaArticulos = negocio.listar();
+
+                }
 
                 repArticulo.DataSource = ListaArticulos;
                 repArticulo.DataBind();
             }
+            
 
             //dgvArticulos.DataSource = Session["listaArticulos"]; //origen de datos de dgvArticulos
             //dgvArticulos.DataBind(); //dibujar la tabla

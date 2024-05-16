@@ -44,7 +44,8 @@
                             </li>                                                        
                         </ul>
                         <div class="buscador">
-                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                            <asp:TextBox ID="txtBuscar" runat="server" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" OnTextChanged="txtBuscar_TextChanged"></asp:TextBox>
+                            <%--<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">--%>
                             <button class="btn btn-outline-success" type="submit">Buscar</button>
                         </div>
                     </div>
