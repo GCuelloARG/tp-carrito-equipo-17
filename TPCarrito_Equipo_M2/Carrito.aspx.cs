@@ -19,9 +19,11 @@ namespace TPCarrito_Equipo_M2
 
                 repCarrito.DataSource = carrito;
                 repCarrito.DataBind();
-                if(carrito != null)
+
+                if (carrito != null)
                 {
                     sumarCompra();
+                    btnVaciarCarrito.Visible = true;
 
                 }                
             }
@@ -162,6 +164,16 @@ namespace TPCarrito_Equipo_M2
                     return;
                 }
             }
+        }
+
+        protected void btnVaciarCarrito_Click(object sender, EventArgs e)
+        {
+            
+            List<Articulo> carrito = new List<Articulo>();
+            Session.Remove("carrito");
+            
+
+            Response.Redirect("Carrito.aspx", false);
         }
     }
 }

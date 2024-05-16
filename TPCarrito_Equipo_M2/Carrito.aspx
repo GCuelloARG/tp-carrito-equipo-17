@@ -47,6 +47,11 @@
                 </div>
             </ItemTemplate>
         </asp:Repeater>
+        <div class="row">
+            <div class="col">
+                <asp:Button ID="btnVaciarCarrito" Text="Vaciar Carrito" runat="server" OnClick="btnVaciarCarrito_Click" CssClass="btn btn-danger" Visible="false"/>
+            </div>
+        </div>
         <div>
             <hr />
             <figure class="text-center">
