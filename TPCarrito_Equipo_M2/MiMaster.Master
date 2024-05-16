@@ -39,7 +39,7 @@
                                     <a class="nav-link active" aria-current="page" href="Carrito.aspx">
                                         <i class="fa-solid fa-cart-shopping fa-fade fa-xl"></i>
                                     </a>
-                                    <span class="cantidad-carrito">10</span>
+                                    <asp:Label ID="lblCantidadCarrito" class="cantidad-carrito" runat="server" Text="0"></asp:Label>
                                 </div>
                             </li>                                                        
                         </ul>

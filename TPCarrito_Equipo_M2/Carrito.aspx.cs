@@ -22,6 +22,7 @@ namespace TPCarrito_Equipo_M2
                 if(carrito != null)
                 {
                     sumarCompra();
+
                 }                
             }
             //generarTablaCarrito(carrito);            
@@ -30,6 +31,7 @@ namespace TPCarrito_Equipo_M2
         void sumarCompra()
         {
             decimal total = 0;
+ 
             List<Articulo> lista = (List<Articulo>)Session["carrito"];
             foreach (Articulo arti in lista)
             {

@@ -21,7 +21,7 @@
 .buscador {
     width: 70%;
     display: flex;
-    margin:auto;
+    margin: auto;
 }
 .buscador button {
     margin-left:10px;

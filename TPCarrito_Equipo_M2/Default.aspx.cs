@@ -45,8 +45,10 @@ namespace TPCarrito_Equipo_M2
 
             if (id != null)
             {
+
                 List<Articulo> listaTemporal = (List<Articulo>)Session["listaArticulos"];                
-                Articulo artAgregado = listaTemporal.Find(a => a.Id == int.Parse(id)); /*busco el id capturado dentro de la lista en sesion*/                
+                Articulo artAgregado = listaTemporal.Find(a => a.Id == int.Parse(id)); /*busco el id capturado dentro de la lista en sesion*/         
+                
 
                 List<Articulo> carrito = new List<Articulo>();
                 if (Session["carrito"] == null) /*si no existe la session del carrito, creo una lista nueva*/
@@ -66,6 +68,7 @@ namespace TPCarrito_Equipo_M2
                     {
                         articuloExistente = true;
                         artAgregado.Cantidad++;
+                        
                         break;                        
                     }
                 }
