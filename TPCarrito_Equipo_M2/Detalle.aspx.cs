@@ -1,4 +1,5 @@
 ﻿using Dominio;
+using Negocio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,11 +16,28 @@ namespace TPCarrito_Equipo_M2
             int id = int.Parse(Request.QueryString["id"].ToString());
             List<Articulo> temporal = (List<Articulo>)Session["listaArticulos"];
             Articulo articulo = temporal.Find(x => x.Id == id);
+
             lblNombre.Text = articulo.Nombre;
             lblDescripcion.Text = articulo.Descripcion;
             lblMarca.Text = articulo.Marca.NombreMarca;
             lblPrecio.Text = articulo.Precio.ToString();
 
+            List<Imagen> listaImagenes = new List<Imagen>();
+            ImagenNegocio imagenNegocio = new ImagenNegocio();
+            List<Imagen> img = new List<Imagen>();
+
+            listaImagenes = imagenNegocio.listar();
+
+            foreach (Imagen foto in listaImagenes)
+            {
+                if(foto.IdArtciulo == articulo.Id)
+                {
+                    img.Add(foto);
+                }
+            }
+
+            repImagenes.DataSource = img;
+            repImagenes.DataBind();
         }
 
         protected void btnAumenta_Click(object sender, EventArgs e)
