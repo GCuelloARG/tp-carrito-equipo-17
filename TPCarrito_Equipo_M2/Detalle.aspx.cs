@@ -30,7 +30,7 @@ namespace TPCarrito_Equipo_M2
 
             foreach (Imagen foto in listaImagenes)
             {
-                if(foto.IdArtciulo == articulo.Id)
+                if (foto.IdArtciulo == articulo.Id)
                 {
                     img.Add(foto);
                 }
@@ -55,6 +55,46 @@ namespace TPCarrito_Equipo_M2
                 cant -= 1;
                 txtCantidad.Text = cant.ToString();
             }
+
+        }
+
+        protected void btnAgregarCarrito_Click(object sender, EventArgs e)
+        {
+            int id = int.Parse(Request.QueryString["id"].ToString());
+            List<Articulo> listaTemporal = (List<Articulo>)Session["listaArticulos"];
+            Articulo artAgregado = listaTemporal.Find(a => a.Id == id);
+
+            List<Articulo> carrito = new List<Articulo>();
+
+            if (Session["carrito"] == null)
+            {
+                carrito = new List<Articulo>();
+            }
+            else
+            {
+                carrito = (List<Articulo>)Session["carrito"];
+            }
+
+            bool articuloExistente = false;
+
+            foreach (Articulo arti in carrito)
+            {
+                if (artAgregado.Id == arti.Id)
+                {
+                    articuloExistente = true;
+                    artAgregado.Cantidad += int.Parse(txtCantidad.Text);
+                    break;
+                }
+            }
+            if (!articuloExistente)
+            {
+                artAgregado.Cantidad += int.Parse(txtCantidad.Text);
+                carrito.Add(artAgregado);
+            }
+
+            Session["carrito"] = carrito;
+
+            Response.Redirect("Carrito.aspx", false);
 
         }
     }
