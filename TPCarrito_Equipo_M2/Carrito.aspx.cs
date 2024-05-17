@@ -22,13 +22,20 @@ namespace TPCarrito_Equipo_M2
 
                 if (carrito != null)
                 {
-                    sumarCompra();
-                    btnVaciarCarrito.Visible = true;
-                    
-
+                    if (carrito.Count() != 0)
+                    {
+                        sumarCompra();
+                        btnVaciarCarrito.Visible = true;
+                    }
+                    else
+                    {
+                        Session.Remove("carrito");
+                        Response.Redirect("Carrito.aspx", false);
+                        return;
+                    }
                 }
                 else /*cuando no hay articulos en el carrito*/
-                {
+                {                    
                     lblCarritoSinArticulos.Visible = true;
                     hlkCarritoSinArticulos.Visible = true;
                 }               
@@ -156,7 +163,7 @@ namespace TPCarrito_Equipo_M2
                         {
                             if (lista[i].Id == artDescontado.Id)
                             {
-                                lista.RemoveAt(i);
+                                lista.RemoveAt(i);                                
                                 Session["carrito"] = lista;
                                 Response.Redirect("Carrito.aspx", false);
                                 return;
@@ -164,12 +171,12 @@ namespace TPCarrito_Equipo_M2
 
                         }
                     }
-                    arti.Cantidad--;
+                    arti.Cantidad--;                    
                     Session["carrito"] = lista;
                     Response.Redirect("Carrito.aspx", false);
                     return;
                 }
-            }
+            }            
         }
 
         protected void btnVaciarCarrito_Click(object sender, EventArgs e)
