@@ -98,7 +98,7 @@ namespace TPCarrito_Equipo_M2
         }*/
 
 
-        protected void btnEliminar_Click(object sender, EventArgs e) 
+        /*protected void btnEliminar_Click(object sender, EventArgs e) 
         {
             Button button = (Button)sender;
             int idArticulo = int.Parse(button.CommandArgument);
@@ -118,7 +118,7 @@ namespace TPCarrito_Equipo_M2
 
             }
 
-        }
+        }*/
 
         protected void btnAumentar_Click(object sender, EventArgs e)
         {
@@ -180,6 +180,30 @@ namespace TPCarrito_Equipo_M2
             
 
             Response.Redirect("Carrito.aspx", false);
+        }
+
+        protected void btnEliminarArticulo_Click(object sender, EventArgs e)
+        {
+            Button btnEliminarArticulo = (Button)sender;
+            int idArticulo = int.Parse(btnEliminarArticulo.CommandArgument);
+
+            List<Articulo> carrito = (List<Articulo>)Session["carrito"];
+
+            for (int i = 0; i < carrito.Count(); i++)
+            {
+                if (carrito[i].Id == idArticulo)
+                {
+                    carrito.RemoveAt(i);
+                    Session["carrito"] = carrito;
+
+                    if (carrito.Count() == 0)
+                    {
+                        Session.Remove("carrito");
+                    }
+                    Response.Redirect("Carrito.aspx", false);
+                    return;
+                }
+            }          
         }
     }
 }
