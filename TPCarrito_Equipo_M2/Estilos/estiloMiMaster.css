@@ -1,9 +1,47 @@
-﻿body {
+﻿
+body {
+}
+.grupoM2 {
+    transition: all 400ms cubic-bezier(1, 0, 0, 1); /*efecto del hover, va a tardar 400ms y ease suavisar el efecto*/
 }
 
-.carrito{
-    position:relative;
-    margin-left:10px;
+.grupoM2:hover {
+    background-color: rgba(99, 93, 102, 0.382);
+    border-radius: 5px;
+    transform: translateY(-10%);/*hace que al pasar el cursor, se mueva*/
+}
+
+
+.letrasGrupoM2:hover {
+    color: #ff151c;
+}
+
+.home {
+    transition: all 400ms cubic-bezier(1, 0, 0, 1); /*efecto del hover, va a tardar 400ms y ease suavisar el efecto*/
+}
+
+.home:hover {
+    background-color: rgba(99, 93, 102, 0.382);
+    border-radius: 7px;
+    transform: translateY(-10%);/*hace que al pasar el cursor, se mueva*/
+}
+.letrasHome:hover {
+    color: #ff151c;
+}
+
+.carrito {
+    position: relative;
+    margin-left: 10px;
+    transition: all 400ms cubic-bezier(1, 0, 0, 1); /*efecto del hover, va a tardar 400ms y ease suavisar el efecto*/
+}
+.carrito:hover{
+    background-color: rgba(99, 93, 102, 0.382);
+    border-radius: 50%;
+    transform: translateY(-10%);/*hace que al pasar el cursor, se mueva*/
+}
+.carrito i:hover{
+    filter: brightness(0) saturate(100%) invert(15%) sepia(100%) saturate(3587%) hue-rotate(349deg) brightness(110%) contrast(101%);
+    
 }
 .cantidad-carrito {
     position: absolute;
