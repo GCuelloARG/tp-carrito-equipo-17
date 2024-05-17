@@ -24,8 +24,14 @@ namespace TPCarrito_Equipo_M2
                 {
                     sumarCompra();
                     btnVaciarCarrito.Visible = true;
+                    
 
-                }                
+                }
+                else /*cuando no hay articulos en el carrito*/
+                {
+                    lblCarritoSinArticulos.Visible = true;
+                    hlkCarritoSinArticulos.Visible = true;
+                }               
             }
             //generarTablaCarrito(carrito);            
         }

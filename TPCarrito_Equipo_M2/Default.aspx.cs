@@ -18,8 +18,9 @@ namespace TPCarrito_Equipo_M2
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            if (Request.QueryString["filtroActivo"] != null)
+            if (Request.QueryString["filtroActivo"] != null) /*activar busqueda*/
                 filtroActivo =bool.Parse( Request.QueryString["filtroActivo"].ToString());
+            
 
             if (Session["listaArticulos"] == null)
             {
@@ -32,15 +33,23 @@ namespace TPCarrito_Equipo_M2
             {
                 if (filtroActivo) /* si se activo la busqueda*/
                 {
+
                     ListaArticulos = Session["filtro"] != null ? (List<Articulo>)Session["filtro"]:ListaArticulos;
- 
+                   
+                    if (ListaArticulos.Count() == 0) /*si no hubo coincidencias en la busqueda*/
+                    {
+                        lblMensajeBusqueda.Visible = true;
+                        hlkMensajeBusqueda.Visible = true;
+
+                    }
+
                     filtroActivo = false;
                 }
                 else /*lista normal*/
                 {
                     ArticuloNegocio negocio = new ArticuloNegocio();
                     ListaArticulos = negocio.listar();
-
+                    
                 }
 
                 repArticulo.DataSource = ListaArticulos;

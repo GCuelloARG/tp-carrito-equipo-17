@@ -31,5 +31,13 @@
             </ItemTemplate>
         </asp:Repeater>
     </div>
+    <figure class="text-center">
+         <blockquote class="blockquote">   
+            <asp:Label ID="lblMensajeBusqueda" runat="server" Visible="false" Text="No hubo coincidencias en la busqueda"></asp:Label>
+            <br />
+            <asp:HyperLink ID="hlkMensajeBusqueda" runat="server" Visible="false" NavigateUrl="~/Default.aspx">Volver a la Pagina Principal</asp:HyperLink>
+        </blockquote>
+   </figure>
 
+    
 </asp:Content>
