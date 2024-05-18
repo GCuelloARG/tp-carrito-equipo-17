@@ -63,6 +63,7 @@
             <hr />
             <figure class="text-center">
                 <blockquote class="blockquote">
+                    <%--se muestra si no hay articulos en el carrito--%>
                     <asp:Label ID="lblTotal" runat="server" CssClass="h2"></asp:Label>
                     <asp:Label ID="lblCarritoSinArticulos" runat="server" Text="Label" Visible="false">No posee articulos agregados en el carrito</asp:Label>
                     <br />

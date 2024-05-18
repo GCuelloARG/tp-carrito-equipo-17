@@ -64,3 +64,15 @@ body {
 .buscador button {
     margin-left:10px;
 }
+
+/*Pagina Default*/
+
+/*Cartas de articulos*/
+.card {
+    transition: all 400ms cubic-bezier(1, 0, 0, 1); /*efecto del hover, va a tardar 400ms y ease suavisar el efecto*/
+}
+
+.card:hover {
+    transform: translateY(-1%); /*hace que al pasar el cursor, se mueva*/
+    border-color: #ff151c;
+}
