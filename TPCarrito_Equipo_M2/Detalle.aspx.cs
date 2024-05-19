@@ -10,7 +10,10 @@ using System.Web.UI.WebControls;
 namespace TPCarrito_Equipo_M2
 {
     public partial class Detalle : System.Web.UI.Page
+
     {
+        public List<Imagen> ListaImagenesID { get; set; }
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             int id = int.Parse(Request.QueryString["id"].ToString());
@@ -36,8 +39,8 @@ namespace TPCarrito_Equipo_M2
                 }
             }
 
-            repImagenes.DataSource = img;
-            repImagenes.DataBind();
+            ListaImagenesID = img;
+            
         }
 
         protected void btnAumenta_Click(object sender, EventArgs e)
