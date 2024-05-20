@@ -70,6 +70,7 @@ body {
 /*Cartas de articulos*/
 .card {
     transition: all 400ms cubic-bezier(1, 0, 0, 1); /*efecto del hover, va a tardar 400ms y ease suavisar el efecto*/
+    align-items: center;
 }
 
 .card:hover {

@@ -22,7 +22,7 @@
                 <div class="card mb-3" style="max-width: 1000px;">
                     <div class="row g-0">
                         <div class="col-md-4">
-                            <img src="<%#((Dominio.Imagen)Eval("Imagen")).UrlImagen %>" class="img-fluid rounded-start" alt="...">
+                            <img src="<%#((Dominio.Imagen)Eval("Imagen")).UrlImagen %>" onerror="handleImageError(this)" class="img-fluid rounded-start" alt="...">
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">

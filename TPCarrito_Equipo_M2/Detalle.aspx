@@ -20,14 +20,14 @@
 
                             {%>
                         <div class="carousel-item active">
-                            <img src="<%:ListaImagenesID[i].UrlImagen %>" class="d-block w-100" alt="...">
+                            <img src="<%:ListaImagenesID[i].UrlImagen %>" onerror="handleImageError(this)" class="d-block w-100" alt="...">
                         </div>
 
                         <%}
                             else
                             {%>
                         <div class="carousel-item">
-                            <img src="<%:ListaImagenesID[i].UrlImagen %>" class="d-block w-100" alt="...">
+                            <img src="<%:ListaImagenesID[i].UrlImagen %>" onerror="handleImageError(this)" class="d-block w-100" alt="...">
                         </div>
 
                         <%}
@@ -36,12 +36,13 @@
 
                         <% } %>
                     </div>
+                    
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="carousel-control-prev-icon" style="filter: brightness(0) saturate(100%) invert(2%) sepia(21%) saturate(9%) hue-rotate(314deg) brightness(100%) contrast(92%);" aria-hidden="true"></span>
                         <span class="visually-hidden">Previous</span>
                     </button>
                     <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="carousel-control-next-icon" style="filter: brightness(0) saturate(100%) invert(2%) sepia(21%) saturate(9%) hue-rotate(314deg) brightness(100%) contrast(92%);" aria-hidden="true"></span>
                         <span class="visually-hidden">Next</span>
                     </button>
 
@@ -64,15 +65,16 @@
                         <div class="col">
 
                             <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                <asp:Button Text="-" ID="btnDisminuye" CssClass="" OnClick="btnDisminuye_Click" runat="server" />
-                                <h5>
-                                    <asp:TextBox ID="txtCantidad" runat="server" CssClass="btn btn-success" Width="44">1</asp:TextBox></h5>
+                                <asp:Button Text="-" ID="btnDisminuye" CssClass="btn btn-success" OnClick="btnDisminuye_Click" runat="server" />
+                                
+                                    <asp:TextBox ID="txtCantidad" runat="server" CssClass="btn btn-success" Width="50">1</asp:TextBox>
                                 <asp:Button Text="+" ID="btnAumenta" CssClass="btn btn-success" OnClick="btnAumenta_Click" runat="server" />
                             </div>
 
 
                         </div>
                     </div>
+                    <br />
                     <asp:Button ID="btnAgregarCarrito" runat="server" CssClass="btn btn-success" Text="Agregar al Carrito" OnClick="btnAgregarCarrito_Click" CommandArgument='<%#Eval("IdArtciulo") %>' />
                 </div>
             </div>
