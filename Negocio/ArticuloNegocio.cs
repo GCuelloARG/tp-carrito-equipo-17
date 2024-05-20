@@ -19,7 +19,8 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("select A.Id, Codigo, Nombre, A.Descripcion, M.Descripcion Marca, C.Descripcion Categoria, Precio, ImagenUrl, A.IdCategoria, A.IdMarca from ARTICULOS A, MARCAS M, CATEGORIAS C, IMAGENES I where A.IdMarca = M.Id and A.IdCategoria = C.Id and A.Id = I.IdArticulo");
+                //corregir consulta
+                datos.setearConsulta("SELECT A.Id, Codigo, Nombre, A.Descripcion, M.Descripcion AS Marca, C.Descripcion AS Categoria, Precio, MIN(ImagenUrl) AS ImagenUrl, A.IdCategoria, A.IdMarca FROM ARTICULOS A JOIN MARCAS M ON A.IdMarca = M.Id JOIN CATEGORIAS C ON A.IdCategoria = C.Id JOIN IMAGENES I ON A.Id = I.IdArticulo GROUP BY A.Id, Codigo, Nombre, A.Descripcion, M.Descripcion, C.Descripcion, Precio, A.IdCategoria, A.IdMarca");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
